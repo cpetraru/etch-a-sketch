@@ -7,3 +7,10 @@ for (let i = 0; i < 256; i++) {
   whiteboard.appendChild(div);
   boxArray.push(div);
 }
+
+for (let i = 0; i < boxArray.length; i++) {
+  boxArray[i].addEventListener(
+    "mouseenter",
+    () => (boxArray[i].style.backgroundColor = "black")
+  );
+}
