@@ -1,4 +1,5 @@
 const whiteboard = document.querySelector(".whiteboard");
+let isClicked = false;
 let boxArray = [];
 
 for (let i = 0; i < 256; i++) {
@@ -8,9 +9,14 @@ for (let i = 0; i < 256; i++) {
   boxArray.push(div);
 }
 
-for (let i = 0; i < boxArray.length; i++) {
-  boxArray[i].addEventListener(
-    "mouseenter",
-    () => (boxArray[i].style.backgroundColor = "black")
-  );
-}
+whiteboard.addEventListener("click", () => {
+  isClicked = true;
+  if (isClicked) {
+    for (let i = 0; i < boxArray.length; i++) {
+      boxArray[i].addEventListener(
+        "mouseenter",
+        () => (boxArray[i].style.backgroundColor = "black")
+      );
+    }
+  }
+});
