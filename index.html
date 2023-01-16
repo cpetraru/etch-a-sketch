@@ -8,13 +8,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="title">
-        <h1>Etch-A-Sketch</h1>
-      </div>
-      <div class="buttons"></div>
-      <div class="whiteboard"></div>
+    <div class="title">
+      <h1>Etch-A-Sketch</h1>
     </div>
+    <div class="container">
+      <div class="sidebar-left">
+        <label for="noBox">No.Boxes?</label>
+        <input type="text" name="noBox" class="noBoxInput" />
+      </div>
+      <div class="main">
+        <div class="whiteboard"></div>
+      </div>
+      <div class="sidebar-right"></div>
+    </div>
+
     <script src="./script.js"></script>
   </body>
 </html>
