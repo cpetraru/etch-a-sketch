@@ -1,15 +1,22 @@
 const whiteboard = document.querySelector(".whiteboard");
+const nrBoxInput = document.querySelector(".noBoxInput");
 let isClicked = false;
 let boxArray = [];
 
 for (let i = 0; i < 256; i++) {
+  createBox();
+}
+
+// FUNCTIONS
+
+function createBox() {
   const div = document.createElement("div");
   div.classList.add("box");
   whiteboard.appendChild(div);
   boxArray.push(div);
 }
 
-whiteboard.addEventListener("click", () => {
+function colorBox() {
   isClicked = true;
   if (isClicked) {
     for (let i = 0; i < boxArray.length; i++) {
@@ -19,4 +26,6 @@ whiteboard.addEventListener("click", () => {
       );
     }
   }
-});
+}
+
+whiteboard.addEventListener("click", colorBox);
