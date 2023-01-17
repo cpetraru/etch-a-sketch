@@ -1,6 +1,7 @@
 const SIZE = 16;
 const whiteboard = document.querySelector(".whiteboard");
 const nrBoxInput = document.querySelector(".noBoxInput");
+const addBoxesBtn = document.querySelector("#addBoxes");
 let size = SIZE;
 let isClicked = false;
 let boxArray = [];
@@ -27,7 +28,7 @@ function colorBox() {
 }
 
 function setSize() {
-  size = nrBoxInput;
+  size = Number(nrBoxInput.value);
 }
 
 function removeBoxes() {
@@ -51,10 +52,15 @@ window.addEventListener("load", (e) => {
 });
 
 nrBoxInput.addEventListener("keydown", (e) => {
-  if ((e.keyCode = 13)) {
+  if ((e.key = "Enter")) {
+    console.log(e);
     setSize();
     removeBoxes();
   }
+});
+
+addBoxesBtn.addEventListener("click", (e) => {
+  createBoxes();
 });
 
 whiteboard.addEventListener("click", colorBox);
