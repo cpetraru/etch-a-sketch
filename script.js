@@ -8,6 +8,13 @@ let boxArray = [];
 
 // FUNCTIONS
 
+function setWhiteboardSize() {
+  whiteboard.setAttribute(
+    "style",
+    `width: ${size * 16}px; height: ${size * 16}px;`
+  );
+}
+
 function createBox() {
   const div = document.createElement("div");
   div.classList.add("box");
@@ -52,15 +59,19 @@ window.addEventListener("load", (e) => {
 });
 
 nrBoxInput.addEventListener("keydown", (e) => {
-  if ((e.key = "Enter")) {
+  if (e.key == "Enter") {
     console.log(e);
     setSize();
     removeBoxes();
+    setWhiteboardSize();
+    createBoxes();
+    nrBoxInput.value = "";
   }
 });
 
 addBoxesBtn.addEventListener("click", (e) => {
   createBoxes();
+  nrBoxInput.value = "";
 });
 
 whiteboard.addEventListener("click", colorBox);
