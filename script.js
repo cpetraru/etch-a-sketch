@@ -1,7 +1,9 @@
 const SIZE = 16;
+const COLOR = "black";
 const whiteboard = document.querySelector(".whiteboard");
 const nrBoxInput = document.querySelector(".noBoxInput");
 const addBoxesBtn = document.querySelector("#addBoxes");
+const resetWbBtn = document.querySelector("#resetBtn");
 let boxSize = SIZE;
 let wbSize = "";
 let isClicked = false;
@@ -13,11 +15,11 @@ function setWhiteboardSize() {
   whiteboard.setAttribute("style", `width: ${wbSize}px; height: ${wbSize}px;`);
 }
 
-function setBoxSize() {
-  if (Number(nrBoxInput.value)) {
-    if (nrBoxInput.value > 0) {
-      if (nrBoxInput.value <= 30) {
-        boxSize = Number(nrBoxInput.value);
+function setBoxSize(boxes) {
+  if (Number(boxes)) {
+    if (boxes > 0) {
+      if (boxes <= 30) {
+        boxSize = Number(boxes);
         wbSize = boxSize * 16;
       } else {
         alert("Whiboard maximum size is 30x30!");
@@ -31,7 +33,7 @@ function setBoxSize() {
 }
 
 function updateWhiteboard() {
-  setBoxSize();
+  setBoxSize(nrBoxInput.value);
   removeBoxes();
   setWhiteboardSize();
   createBoxes();
@@ -71,6 +73,10 @@ function removeBoxes() {
   }
 }
 
+function resetWb() {
+  location.reload();
+}
+
 // EVENT LISTENERS
 
 window.addEventListener("load", (e) => {
@@ -88,3 +94,5 @@ addBoxesBtn.addEventListener("click", (e) => {
 });
 
 whiteboard.addEventListener("click", colorBox);
+
+resetWbBtn.addEventListener("click", resetWb);
