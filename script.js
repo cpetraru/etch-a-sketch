@@ -2,17 +2,20 @@ const SIZE = 16;
 const whiteboard = document.querySelector(".whiteboard");
 const nrBoxInput = document.querySelector(".noBoxInput");
 const addBoxesBtn = document.querySelector("#addBoxes");
-let size = SIZE;
+let boxSize = SIZE;
+let wbSize = "";
 let isClicked = false;
 let boxArray = [];
 
 // FUNCTIONS
 
 function setWhiteboardSize() {
-  whiteboard.setAttribute(
-    "style",
-    `width: ${size * 16}px; height: ${size * 16}px;`
-  );
+  whiteboard.setAttribute("style", `width: ${wbSize}px; height: ${wbSize}px;`);
+}
+
+function setBoxSize() {
+  boxSize = Number(nrBoxInput.value);
+  wbSize = boxSize * 16;
 }
 
 function createBox() {
@@ -20,6 +23,12 @@ function createBox() {
   div.classList.add("box");
   whiteboard.appendChild(div);
   boxArray.push(div);
+}
+
+function createBoxes() {
+  for (let i = 0; i < boxSize * boxSize; i++) {
+    createBox();
+  }
 }
 
 function colorBox() {
@@ -34,21 +43,11 @@ function colorBox() {
   }
 }
 
-function setSize() {
-  size = Number(nrBoxInput.value);
-}
-
 function removeBoxes() {
   while (whiteboard.childElementCount > 0) {
     for (let i = 0; i < whiteboard.childElementCount; i++) {
       whiteboard.removeChild(whiteboard.childNodes[i]);
     }
-  }
-}
-
-function createBoxes() {
-  for (let i = 0; i < size * size; i++) {
-    createBox();
   }
 }
 
@@ -61,7 +60,7 @@ window.addEventListener("load", (e) => {
 nrBoxInput.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
     console.log(e);
-    setSize();
+    setBoxSize();
     removeBoxes();
     setWhiteboardSize();
     createBoxes();
