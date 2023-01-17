@@ -14,8 +14,28 @@ function setWhiteboardSize() {
 }
 
 function setBoxSize() {
-  boxSize = Number(nrBoxInput.value);
-  wbSize = boxSize * 16;
+  if (Number(nrBoxInput.value)) {
+    if (nrBoxInput.value > 0) {
+      if (nrBoxInput.value <= 30) {
+        boxSize = Number(nrBoxInput.value);
+        wbSize = boxSize * 16;
+      } else {
+        alert("Whiboard maximum size is 30x30!");
+      }
+    } else {
+      alert("Whiteboard size must be positive!");
+    }
+  } else {
+    alert("Please enter a number!");
+  }
+}
+
+function updateWhiteboard() {
+  setBoxSize();
+  removeBoxes();
+  setWhiteboardSize();
+  createBoxes();
+  nrBoxInput.value = "";
 }
 
 function createBox() {
@@ -59,18 +79,12 @@ window.addEventListener("load", (e) => {
 
 nrBoxInput.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
-    console.log(e);
-    setBoxSize();
-    removeBoxes();
-    setWhiteboardSize();
-    createBoxes();
-    nrBoxInput.value = "";
+    updateWhiteboard();
   }
 });
 
 addBoxesBtn.addEventListener("click", (e) => {
-  createBoxes();
-  nrBoxInput.value = "";
+  updateWhiteboard();
 });
 
 whiteboard.addEventListener("click", colorBox);
