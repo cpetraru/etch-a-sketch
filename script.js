@@ -5,10 +5,6 @@ let size = SIZE;
 let isClicked = false;
 let boxArray = [];
 
-for (let i = 0; i < size * size; i++) {
-  createBox();
-}
-
 // FUNCTIONS
 
 function createBox() {
@@ -37,16 +33,28 @@ function setSize() {
 function removeBoxes() {
   while (whiteboard.childElementCount > 0) {
     for (let i = 0; i < whiteboard.childElementCount; i++) {
-      whiteboard.removeChild(whiteboard.childNodes[i])
+      whiteboard.removeChild(whiteboard.childNodes[i]);
     }
   }
 }
 
+function createBoxes() {
+  for (let i = 0; i < size * size; i++) {
+    createBox();
+  }
+}
+
+// EVENT LISTENERS
+
+window.addEventListener("load", (e) => {
+  createBoxes();
+});
+
 nrBoxInput.addEventListener("keydown", (e) => {
-  if (e.keyCode = 13) {
+  if ((e.keyCode = 13)) {
     setSize();
     removeBoxes();
   }
-})
+});
 
 whiteboard.addEventListener("click", colorBox);
