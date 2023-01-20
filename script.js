@@ -1,18 +1,56 @@
 const SIZE = 16;
+const COLOR = "black";
 const whiteboard = document.querySelector(".whiteboard");
 const nrBoxInput = document.querySelector(".noBoxInput");
 const addBoxesBtn = document.querySelector("#addBoxes");
-let size = SIZE;
+const resetWbBtn = document.querySelector("#resetBtn");
+let boxSize = SIZE;
+let wbSize = "";
 let isClicked = false;
 let boxArray = [];
 
 // FUNCTIONS
+
+function setWhiteboardSize() {
+  whiteboard.setAttribute("style", `width: ${wbSize}px; height: ${wbSize}px;`);
+}
+
+function setBoxSize(boxes) {
+  if (Number(boxes)) {
+    if (boxes > 0) {
+      if (boxes <= 30) {
+        boxSize = Number(boxes);
+        wbSize = boxSize * 16;
+      } else {
+        alert("Whiboard maximum size is 30x30!");
+      }
+    } else {
+      alert("Whiteboard size must be positive!");
+    }
+  } else {
+    alert("Please enter a number!");
+  }
+}
+
+function updateWhiteboard() {
+  setBoxSize(nrBoxInput.value);
+  removeBoxes();
+  setWhiteboardSize();
+  createBoxes();
+  nrBoxInput.value = "";
+}
 
 function createBox() {
   const div = document.createElement("div");
   div.classList.add("box");
   whiteboard.appendChild(div);
   boxArray.push(div);
+}
+
+function createBoxes() {
+  for (let i = 0; i < boxSize * boxSize; i++) {
+    createBox();
+  }
 }
 
 function colorBox() {
@@ -27,10 +65,6 @@ function colorBox() {
   }
 }
 
-function setSize() {
-  size = Number(nrBoxInput.value);
-}
-
 function removeBoxes() {
   while (whiteboard.childElementCount > 0) {
     for (let i = 0; i < whiteboard.childElementCount; i++) {
@@ -39,10 +73,8 @@ function removeBoxes() {
   }
 }
 
-function createBoxes() {
-  for (let i = 0; i < size * size; i++) {
-    createBox();
-  }
+function resetWb() {
+  location.reload();
 }
 
 // EVENT LISTENERS
@@ -52,15 +84,15 @@ window.addEventListener("load", (e) => {
 });
 
 nrBoxInput.addEventListener("keydown", (e) => {
-  if ((e.key = "Enter")) {
-    console.log(e);
-    setSize();
-    removeBoxes();
+  if (e.key == "Enter") {
+    updateWhiteboard();
   }
 });
 
 addBoxesBtn.addEventListener("click", (e) => {
-  createBoxes();
+  updateWhiteboard();
 });
 
 whiteboard.addEventListener("click", colorBox);
+
+resetWbBtn.addEventListener("click", resetWb);
