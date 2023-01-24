@@ -15,8 +15,15 @@
       <div class="sidebar-left">
         <label for="noBox">No.Boxes?</label>
         <div class="boxes">
-          <input type="text" name="noBox" class="noBoxInput" />
-          <input type="button" value="Add" id="addBoxes" />
+          <input
+            type="range"
+            name="noBox"
+            class="noBoxInput"
+            min="16"
+            max="30"
+            step="1"
+          />
+          <!-- <input type="button" value="Add" id="addBoxes" /> -->
         </div>
         <div class="reset">
           <input type="button" value="Reset" id="resetBtn" />

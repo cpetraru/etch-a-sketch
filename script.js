@@ -2,7 +2,7 @@ const SIZE = 16;
 const COLOR = "black";
 const whiteboard = document.querySelector(".whiteboard");
 const nrBoxInput = document.querySelector(".noBoxInput");
-const addBoxesBtn = document.querySelector("#addBoxes");
+// const addBoxesBtn = document.querySelector("#addBoxes");
 const resetWbBtn = document.querySelector("#resetBtn");
 let boxSize = SIZE;
 let wbSize = "";
@@ -37,7 +37,7 @@ function updateWhiteboard() {
   removeBoxes();
   setWhiteboardSize();
   createBoxes();
-  nrBoxInput.value = "";
+  // nrBoxInput.value = "";
 }
 
 function createBox() {
@@ -83,15 +83,17 @@ window.addEventListener("load", (e) => {
   createBoxes();
 });
 
-nrBoxInput.addEventListener("keydown", (e) => {
-  if (e.key == "Enter") {
-    updateWhiteboard();
-  }
-});
+// nrBoxInput.addEventListener("keydown", (e) => {
+//   if (e.key == "Enter") {
+//     updateWhiteboard();
+//   }
+// });
 
-addBoxesBtn.addEventListener("click", (e) => {
-  updateWhiteboard();
-});
+// addBoxesBtn.addEventListener("click", (e) => {
+//   updateWhiteboard();
+// });
+
+nrBoxInput.addEventListener("change", updateWhiteboard);
 
 whiteboard.addEventListener("click", colorBox);
 
