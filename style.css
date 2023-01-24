@@ -44,8 +44,6 @@ body {
 .main .whiteboard {
   display: flex;
   flex-wrap: wrap;
-  height: 256px;
-  width: 256px;
   border: 0.5px solid black;
 }
 

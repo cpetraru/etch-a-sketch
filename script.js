@@ -1,11 +1,11 @@
-const SIZE = 16;
+const MAX_SIZE = 30;
 const COLOR = "black";
 const whiteboard = document.querySelector(".whiteboard");
 const nrBoxInput = document.querySelector(".noBoxInput");
 // const addBoxesBtn = document.querySelector("#addBoxes");
 const resetWbBtn = document.querySelector("#resetBtn");
-let boxSize = SIZE;
-let wbSize = "";
+let boxSize = 16;
+let wbSize = boxSize * 16;
 let isClicked = false;
 let boxArray = [];
 
@@ -18,7 +18,7 @@ function setWhiteboardSize() {
 function setBoxSize(boxes) {
   if (Number(boxes)) {
     if (boxes > 0) {
-      if (boxes <= 30) {
+      if (boxes <= MAX_SIZE) {
         boxSize = Number(boxes);
         wbSize = boxSize * 16;
       } else {
@@ -81,6 +81,7 @@ function resetWb() {
 
 window.addEventListener("load", (e) => {
   createBoxes();
+  setWhiteboardSize();
 });
 
 // nrBoxInput.addEventListener("keydown", (e) => {
