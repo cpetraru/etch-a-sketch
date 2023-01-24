@@ -1,8 +1,8 @@
 const MAX_SIZE = 30;
-const COLOR = "black";
 const gridSizeText = document.querySelector("#grid-size-text");
 const whiteboard = document.querySelector(".whiteboard");
 const nrBoxInput = document.querySelector(".noBoxInput");
+const colorInput = document.querySelector("#colorPicker");
 // const addBoxesBtn = document.querySelector("#addBoxes");
 const resetWbBtn = document.querySelector("#resetBtn");
 let boxSize = 16;
@@ -64,7 +64,7 @@ function colorBox() {
     for (let i = 0; i < boxArray.length; i++) {
       boxArray[i].addEventListener(
         "mouseenter",
-        () => (boxArray[i].style.backgroundColor = "black")
+        () => (boxArray[i].style.backgroundColor = colorInput.value)
       );
     }
   }
