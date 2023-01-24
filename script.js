@@ -1,5 +1,6 @@
 const MAX_SIZE = 30;
 const COLOR = "black";
+const gridSizeText = document.querySelector("#grid-size-text");
 const whiteboard = document.querySelector(".whiteboard");
 const nrBoxInput = document.querySelector(".noBoxInput");
 // const addBoxesBtn = document.querySelector("#addBoxes");
@@ -13,6 +14,10 @@ let boxArray = [];
 
 function setWhiteboardSize() {
   whiteboard.setAttribute("style", `width: ${wbSize}px; height: ${wbSize}px;`);
+}
+
+function setGridSizeText() {
+  gridSizeText.innerText = `Grid Size: ${boxSize}x${boxSize}`;
 }
 
 function setBoxSize(boxes) {
@@ -82,6 +87,7 @@ function resetWb() {
 window.addEventListener("load", (e) => {
   createBoxes();
   setWhiteboardSize();
+  setGridSizeText();
 });
 
 // nrBoxInput.addEventListener("keydown", (e) => {
@@ -94,7 +100,10 @@ window.addEventListener("load", (e) => {
 //   updateWhiteboard();
 // });
 
-nrBoxInput.addEventListener("change", updateWhiteboard);
+nrBoxInput.addEventListener("change", () => {
+  updateWhiteboard();
+  setGridSizeText();
+});
 
 whiteboard.addEventListener("click", colorBox);
 
