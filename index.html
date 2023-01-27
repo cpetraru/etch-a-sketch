@@ -5,42 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch-A-Sketch</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="newStyle.css" />
   </head>
   <body>
-    <div class="title">
+    <div class="header">
       <h1>Etch-A-Sketch</h1>
     </div>
     <div class="container">
       <div class="sidebar-left">
-        <label for="noBox">No.Boxes?</label>
-        <div class="boxes">
-          <input
-            type="range"
-            name="noBox"
-            class="noBoxInput"
-            min="16"
-            max="30"
-            value="16"
-            step="1"
-          />
-          <!-- <input type="button" value="Add" id="addBoxes" /> -->
+        <div class="option menu-title">
+          <h3>Menu</h3>
         </div>
-        <div class="grid-size">
+        <div class="option box-options">
+          <label for="noBox">No.Boxes?</label>
+          <div class="boxes">
+            <input
+              type="range"
+              name="noBox"
+              class="noBoxInput"
+              min="16"
+              max="100"
+              value="16"
+              step="1"
+            />
+          </div>
+        </div>
+        <div class="option grid-size">
           <p id="grid-size-text"></p>
         </div>
-        <label for="colorPicker">Choose Color:</label>
-        <input type="color" name="colorPicker" id="colorPicker" />
+        <div class="option color-picker">
+          <label for="colorPicker">Choose Color:</label>
+          <input type="color" name="colorPicker" id="colorPicker" />
+        </div>
+
         <div class="reset">
-          <input type="button" value="Reset" id="resetBtn" />
+          <a href="" id="resetBtn">Reset</a>
         </div>
       </div>
       <div class="main">
         <div class="whiteboard"></div>
       </div>
-      <div class="sidebar-right"></div>
     </div>
-
+    <div class="footer">
+      <span id="copyright"> &#169;</span> CATALIN PETRARU @2022
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>

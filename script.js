@@ -1,19 +1,20 @@
-const MAX_SIZE = 30;
+const MAX_SIZE = 100;
 const gridSizeText = document.querySelector("#grid-size-text");
 const whiteboard = document.querySelector(".whiteboard");
 const nrBoxInput = document.querySelector(".noBoxInput");
 const colorInput = document.querySelector("#colorPicker");
-// const addBoxesBtn = document.querySelector("#addBoxes");
 const resetWbBtn = document.querySelector("#resetBtn");
 let boxSize = 16;
-let wbSize = boxSize * 16;
 let isClicked = false;
 let boxArray = [];
 
 // FUNCTIONS
 
 function setWhiteboardSize() {
-  whiteboard.setAttribute("style", `width: ${wbSize}px; height: ${wbSize}px;`);
+  whiteboard.setAttribute(
+    "style",
+    `grid-template-columns: repeat(${boxSize}, 1fr)`
+  );
 }
 
 function setGridSizeText() {
@@ -25,9 +26,8 @@ function setBoxSize(boxes) {
     if (boxes > 0) {
       if (boxes <= MAX_SIZE) {
         boxSize = Number(boxes);
-        wbSize = boxSize * 16;
       } else {
-        alert("Whiboard maximum size is 30x30!");
+        alert("Whiboard maximum size is 100x100!");
       }
     } else {
       alert("Whiteboard size must be positive!");
@@ -42,7 +42,6 @@ function updateWhiteboard() {
   removeBoxes();
   setWhiteboardSize();
   createBoxes();
-  // nrBoxInput.value = "";
 }
 
 function createBox() {
@@ -89,16 +88,6 @@ window.addEventListener("load", (e) => {
   setWhiteboardSize();
   setGridSizeText();
 });
-
-// nrBoxInput.addEventListener("keydown", (e) => {
-//   if (e.key == "Enter") {
-//     updateWhiteboard();
-//   }
-// });
-
-// addBoxesBtn.addEventListener("click", (e) => {
-//   updateWhiteboard();
-// });
 
 nrBoxInput.addEventListener("change", () => {
   updateWhiteboard();
