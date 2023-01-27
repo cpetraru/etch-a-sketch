@@ -26,9 +26,8 @@ function setBoxSize(boxes) {
     if (boxes > 0) {
       if (boxes <= MAX_SIZE) {
         boxSize = Number(boxes);
-        wbSize = boxSize * 16;
       } else {
-        alert("Whiboard maximum size is 30x30!");
+        alert("Whiboard maximum size is 100x100!");
       }
     } else {
       alert("Whiteboard size must be positive!");
