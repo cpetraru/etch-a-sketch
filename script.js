@@ -13,7 +13,10 @@ let boxArray = [];
 // FUNCTIONS
 
 function setWhiteboardSize() {
-  whiteboard.setAttribute("style", `width: ${wbSize}px; height: ${wbSize}px;`);
+  whiteboard.setAttribute(
+    "style",
+    `grid-template-columns: repeat(${boxSize}, 1fr)`
+  );
 }
 
 function setGridSizeText() {

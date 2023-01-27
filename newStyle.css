@@ -56,12 +56,13 @@ body {
 }
 
 .main .whiteboard {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   border: 0.5px solid black;
+  height: 512px;
+  width: 512px;
 }
 
 .whiteboard .box {
-  height: 16px;
-  width: 16px;
+  /* height: 16px;
+  width: 16px; */
 }
