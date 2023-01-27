@@ -27,6 +27,7 @@ h1 {
   font-size: 50px;
   font-weight: 400;
   font-style: italic;
+  background-color: none;
 }
 
 body,
@@ -44,7 +45,8 @@ body {
   flex-direction: column;
 }
 
-.title,
+.header,
+.footer,
 .sidebar-left,
 .main,
 #resetBtn {
@@ -53,7 +55,8 @@ body {
   background-color: rgba(238, 240, 241, 0.233);
 }
 
-.title,
+.header,
+.footer,
 .sidebar-left,
 .main,
 .whiteboard,
@@ -68,7 +71,8 @@ body {
   padding: 10px;
 }
 
-.title {
+.header,
+.footer {
   text-align: center;
   padding: 25px;
 }
@@ -134,4 +138,8 @@ body {
 
 .box {
   border: 0.1px solid rgba(0, 0, 0, 0.103);
+}
+
+#copyright {
+  font-size: 25px;
 }
