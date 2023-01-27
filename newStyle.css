@@ -7,19 +7,38 @@ html,
 body {
   height: 100%;
   width: 100%;
+  background-color: rgba(244, 245, 245, 0.178);
+}
+
+body,
+.container,
+.sidebar-left,
+.color-picker,
+.reset,
+.main {
+  display: flex;
 }
 
 body {
   min-height: 100vh;
-  display: flex;
   flex-direction: column;
 }
 
 .title,
 .sidebar-left,
-.main {
+.main,
+#resetBtn {
   margin: 10px;
   border-radius: 15px;
+  background-color: rgba(238, 240, 241, 0.233);
+}
+
+.title,
+.sidebar-left,
+.main,
+.whiteboard,
+.sidebar-left .option,
+#resetBtn {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -34,31 +53,50 @@ body {
 }
 
 .container {
-  display: flex;
   height: 100%;
 }
 
-.sidebar-left,
-.sidebar-right {
+.sidebar-left .option {
+  background-color: white;
+  margin: 3px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sidebar-left {
   min-width: 15%;
-  display: flex;
-  align-items: center;
   flex-direction: column;
   gap: 10px;
 }
 
+.color-picker {
+  align-items: center;
+  gap: 20px;
+}
+
+#resetBtn {
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px 30px;
+  margin: 3px;
+}
+
 .main {
-  display: flex;
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  max-width: 75vw;
 }
 
 .main .whiteboard {
   display: grid;
-  border: 0.5px solid black;
   height: 512px;
   width: 512px;
+  background-color: white;
+}
+
+.box {
+  border: 0.1px solid rgba(0, 0, 0, 0.103);
 }
